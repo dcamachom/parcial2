@@ -1,0 +1,63 @@
+<div class="container-fluid">
+  <div class="col-6">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="h4">#</th>
+          <th class="h4">Nombre</th>
+          <th class="h4">País</th>
+          <th class="h4">Genero</th>
+          <th class="h4">Fundación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let banda of bandas">
+          <td>
+            <dd>{{banda.id}}</dd>
+          </td>
+          <td>
+            <dd>{{banda.name}}</dd>
+          </td>
+          <td>
+            <dd>{{banda.country}}</dd>
+          </td>
+          <td>
+            <dd>{{banda.genre}}</dd>
+          </td>
+          <td>
+            <dd>{{banda.foundation_year}}</dd>
+          </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="row justify-content-end">
+      <h6>La banda más antigua es {{getNombreMayor()}} y fue fundada hace {{getMayor()}} años</h6>
+  </div>
+  </div>
+
+  <div *ngIf="selected">
+    <app-banda-detail [bandaDetail]="selectedBanda"></app-banda-detail>
+  </div>
+  <hr />
+
+  <div class="container-fluid">
+  <div class="row">
+   <div *ngFor="let banda of bandas" class="col mb-2">
+     <div class="card" style="width: 15rem; height: 33rem">
+       <img
+         class="card-img-top"
+         src="{{ banda.image }}"
+         alt="{{ banda.image}}"
+         (click)="onSelected(banda)"
+       />
+       <div class="card-body">
+         <h5 class="card-title">{{ banda.name}}</h5>
+         <p class="card-text">[{{ banda.description }}]</p>
+       </div>
+     </div>
+   </div>
+  </div>
+  </div>
+  </div>
+
+
